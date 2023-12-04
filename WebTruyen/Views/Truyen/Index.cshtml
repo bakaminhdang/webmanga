@@ -1,0 +1,179 @@
+@model WebTruyen.Models.Chuong
+@{ string playlistId = "0tb6pB0vemMBE2wpM5RBMb"; }
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml"; }
+
+
+<div class="download-link-container">
+    <a href="@Url.Action("DownloadChapter", "Truyen", new { chapterId = Model.MaChuong, storyId= Model.MaTruyen })" class="download-link">Download Chapter</a>
+</div>
+<div>
+    <hr class="chapter-start container-fluid">
+    <div class="chapter-nav text-center">
+        <div class="chapter-actions chapter-actions-origin d-flex align-items-center justify-content-center">
+            <a class="btn btn-success me-1 chapter-prev"
+               href="@Url.Action("ChuyenChuong", "Truyen", new {  id = Model.MaTruyen, id2 = Model.MaChuong, nextChapter = false })" title="">
+                <span>
+                    BackChapter
+                </span>
+            </a>
+            @Html.Action("Chuong", "Truyen")
+            <a class="btn btn-success chapter-next"
+               href="@Url.Action("ChuyenChuong", "Truyen", new { id = Model.MaTruyen, id2 = Model.MaChuong, nextChapter = true })" title="">
+                <span>
+                    NextChapter
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<div id="content">
+    <div id="content1">
+        <img src="~/img/truyen/@Model.hinh.ToString()" />
+    </div>
+    <div id="content2">
+        <h2>Spotify</h2>
+
+        <iframe title="Spotify Embed: Recommendation Playlist"
+                src="https://open.spotify.com/embed/playlist/@playlistId?utm_source=generator&theme=0"
+                width="350"
+                height="900"
+                style="min-height:360px;"
+                frameborder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy">
+        </iframe>
+    </div>
+    <br />
+    <br />
+    <br />
+</div>
+<br />
+<br />
+<br />
+<div>
+    <hr class="chapter-start container-fluid">
+    <div class="chapter-nav text-center">
+        <div class="chapter-actions chapter-actions-origin d-flex align-items-center justify-content-center">
+            <a class="btn btn-success me-1 chapter-prev"
+               href="@Url.Action("ChuyenChuong", "Truyen", new {  id = Model.MaTruyen, id2 = Model.MaChuong, nextChapter = false })" title="">
+                <span>
+                    BackChapter
+                </span>
+            </a>
+          
+            <a class="btn btn-success chapter-next"
+               href="@Url.Action("ChuyenChuong", "Truyen", new { id = Model.MaTruyen, id2 = Model.MaChuong, nextChapter = true })" title="">
+                <span>
+                    NextChapter
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });</script>
+<style>
+    #content {
+        display: flex;
+        justify-content: center;
+    }
+
+    #content1 {
+        flex-basis: 70%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #content2 {
+        flex-basis: 30%;
+    }
+
+    .custom-dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-toggle {
+        padding: 10px;
+        background-color: #3498db;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .dropdown-list {
+        display: none;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        z-index: 1;
+    }
+
+        .dropdown-list a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+
+            .dropdown-list a:hover {
+                background-color: #f2f2f2;
+            }
+
+    .download-link-container {
+        text-align: center; /* Căn giữa nút download */
+    }
+
+    .download-link {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        text-decoration: none;
+        cursor: pointer;
+        border-radius: 5px;
+        background-color: #e74c3c; /* Màu đỏ */
+        color: #fff; /* Màu chữ trắng */
+        border: 2px solid #e74c3c; /* Viền đỏ */
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        /* Hover effect */
+        .download-link:hover {
+            background-color: #c0392b; /* Màu đỏ đậm khi di chuột */
+            color: #fff;
+        }
+
+        /* Active effect (khi được nhấp vào) */
+        .download-link:active {
+            background-color: #922b21; /* Màu đỏ tối khi nhấp */
+            color: #fff;
+        }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var dropdownButton = document.getElementById("dropdownButton");
+        var dropdownList = document.getElementById("dropdownList");
+
+        dropdownButton.addEventListener("click", function () {
+            dropdownList.style.display = (dropdownList.style.display === "block") ? "none" : "block";
+        });
+
+        // Đóng dropdown nếu click bên ngoài dropdown
+        document.addEventListener("click", function (event) {
+            if (!event.target.matches('.dropdown-toggle')) {
+                dropdownList.style.display = "none";
+            }
+        });
+    });
+</script>

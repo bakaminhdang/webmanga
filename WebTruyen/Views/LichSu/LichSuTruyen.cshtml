@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "LichSuTruyen";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+@model IEnumerable<WebTruyen.Models.Lichsu>
+
+<h2>Reading History</h2>
+<ul>
+    @foreach (var history in Model)
+    {
+        <li>Story @history.Truyen.TenTruyen - Read on @history.Thoigiandoc <a href="@Url.Action("ChiTietTruyen","TrangChu", new { id = history.MaTruyen })">Chi Tiết Truyện</a></li>
+        
+    }
+</ul>

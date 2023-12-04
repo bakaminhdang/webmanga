@@ -1,0 +1,55 @@
+﻿@using WebTruyen.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<WebTruyen.Models.TheLoai>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container">
+    <br />
+    <h2 style="text-align:center">Quản lý chủ đề</h2>
+
+    <p>
+        @Html.ActionLink("Thêm mới", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Tên thể loại
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenTheLoai)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.MaTheLoai })" class="btn btn-warning" role="button">Sửa</a>
+
+                    <a href="@Url.Action("Details", new { id = item.MaTheLoai })" class="btn btn-primary" role="button">Chi tiết</a>
+
+                    <a href="@Url.Action("Delete", new { id = item.MaTheLoai })" class="btn btn-danger" role="button">Xóa</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+<div>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 :Model.PageNumber)/@Model.PageCount
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>
+@*@Styles.Render("~/Content/PagedList.css")*@
+</div>

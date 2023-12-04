@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebTruyen.Models.Truyen>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+@section slider{
+    @Html.Action("SliderPartial", "TrangChu")
+}
+<div class="lastest container mt-4 mt-sm-5">
+    <div class="row text-center">
+        <div class="col-lg-6">
+            <h2 class="font-weight-bolder float-left">Lastest Manga Updates</h2>
+        </div>
+
+</div>
+
+    <div class="posts row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-2 col-md-3 col-sm-4">
+                <div class="card mb-3">
+                    <a href="@Url.Action("Chitiettruyen","TrangChu", new {id = item.MaTruyen })"><img src="~/img/@item.Hinh" class="card-img-top" alt=""></a>
+
+                    <div class="over text-center">
+                        <div class="head text-left">
+                            <h6>@item.TenTruyen</h6>
+                        </div>
+                        <div class="about-list">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Genre:</th>
+                                        <td>Sport</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Họa Sĩ:</th>
+                                        <td>@item.TacGia</td>
+                                    </tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="about text-muted">
+                            @item.MoTa
+                        </p>
+                        <a class="reading btn" href="@Url.Action("Chitiettruyen","TrangChu", new {id = item.MaTruyen })">Start reading VOL. 1</a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="@Url.Action("Chitiettruyen","TrangChu", new {id = item.MaTruyen })">@item.TenTruyen</a></h5>
+                        <p class="card-text">CH.1</p>
+                        <p class="card-text"><small class="text-muted text-uppercase">Update: @item.NgayXuatBan</small></p>
+
+
+                    </div>
+                </div>
+            </div>
+            }
+    </div>
+    <div>
+        @section DeXuat
+        {
+            @Html.Action("DeXuat", "TrangChu")
+        }
+    </div>
+</div>
+
+
+

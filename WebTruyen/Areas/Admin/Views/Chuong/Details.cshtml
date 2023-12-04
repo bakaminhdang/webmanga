@@ -1,0 +1,48 @@
+﻿@model WebTruyen.Models.Chuong
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+<div class="container">
+    <br />
+    <h2 style="text-align:center">CHI TIẾT CHƯƠNG</h2>
+    <dl class="dl-horizontal">
+        <p> <b>Tên truyện: </b>@Html.DisplayFor(model => model.Truyen.TenTruyen)</p>
+        <p> <b>Số chương: </b>@Html.DisplayFor(model => model.SoChuong)</p>
+        <p> <b>Trạng thái: </b> @Html.DisplayFor(model => model.TieuDe)</p>
+        <dt>
+            Mô tả:
+        </dt>
+
+        <dd>
+            @Html.Raw(@Model.NoiDung.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+        </dd>
+
+
+        <dt>
+            Hình:
+        </dt>
+
+        <dd>
+            <img src="~/img/@Model.hinh" alt=" @Model.Truyen.TenTruyen">
+        </dd>
+
+
+
+    </dl>
+
+    <p>
+        <br />
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.MaTruyen }) |
+        @Html.ActionLink("VỀ TRANG QUẢN LÝ CHƯƠNG", "Index")
+        <br />
+    </p>
+</div>
+

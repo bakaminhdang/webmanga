@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebTruyen.Models.Truyen>
+@{ ViewBag.Title = "TruyenTheoTL";
+                Layout = "~/Views/Shared/Layout.cshtml"; }
+
+<div class="lastest container mt-4 mt-sm-5">
+    <div class="row text-center">
+        <div class="text-left-button-right">
+            <p class="title-header">CÓ THỂ BẠN SẼ THÍCH</p>
+        </div>
+
+    </div>
+
+    <div class="posts row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-2 col-md-3 col-sm-4">
+                <div class="card mb-3">
+                    <a href="@Url.Action("Chitiettruyen","TrangChu", new {id = item.MaTruyen })"><img src="~/img/@item.Hinh" class="card-img-top" alt=""></a>
+
+                    <div class="over text-center">
+                        <div class="head text-left">
+                            <h6>@item.TenTruyen</h6>
+                        </div>
+                        <div class="about-list">
+                            <table class="table table-borderless">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Genre:</th>
+                                        <td>Sport</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Họa Sĩ:</th>
+                                        <td>@item.TacGia</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Cập Nhật :</th>
+                                        <td>VOL. 125</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="about text-muted">
+                            @item.MoTa
+                        </p>
+                        <a class="reading btn" href="@Url.Action("Chitiettruyen","TrangChu", new {id = item.MaTruyen })">Start reading VOL. 1</a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="@Url.Action("Chitiettruyen","TrangChu", new {id = item.MaTruyen })">One Piece</a></h5>
+                        <p class="card-text">CH. 2</p>
+                        <p class="card-text"><small class="text-muted text-uppercase">Update 1 Hour ago</small></p>
+
+
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+

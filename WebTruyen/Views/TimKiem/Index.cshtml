@@ -1,0 +1,73 @@
+﻿@model PagedList.PagedList<Truyen>
+@using PagedList.Mvc;
+@using WebTruyen.Models;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+
+@{
+    if (Model != null)
+    {
+        <h2>Kết Quả Tìm Kiếm</h2>
+
+        <table class="table">
+            <tr>
+                <th>TenTruyen</th>
+                <th>MoTa</th>
+                <th>NgayXuatBan</th>
+                <th>Hinh</th>
+                <th>DiemDanhGia</th>
+                <th>GiaTruyen</th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TenTruyen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MoTa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NgayXuatBan)
+                    </td>
+                    <td>
+                        <img src="~/img/@item.Hinh" style="width:50px;" />
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiemDanhGia)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GiaTruyen)
+                    </td>
+
+                    <td>
+                        <a href="@Url.Action("ChiTietTruyen","TrangChu", new { id = item.MaTruyen })">Chi Tiết Truyện</a>
+                    </td>
+
+                </tr>
+
+            }
+        </table>
+        <div>Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount</div>
+        <div class="MenuTrang">
+            @Html.PagedListPager(Model, Page => Url.Action("SearchPhanTrang", new { page = Page, strSearch = ViewBag.Sreach }))
+
+
+        </div>
+        <style>
+            .MenuTrang {
+                display: inline;
+                text-align: center;
+            }
+        </style>
+    }
+}

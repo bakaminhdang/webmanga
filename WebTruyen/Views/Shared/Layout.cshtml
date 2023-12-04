@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Manga Reader</title>
+
+    <!-- css files -->
+
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <link href="~/Content/css/main.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- start navbar -->
+
+    @Html.Action("NavPartial", "TrangChu")
+
+    <!-- end navbar-->
+    <!-- start slider -->
+    @RenderSection("slider", required: false)
+
+    <!-- end slider -->
+    <!-- start lastest -->
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <!-- end lastest -->
+    @RenderSection("DeXuat", required: false)
+    <!-- start footer -->
+    @Html.Partial("FooterPartial")
+    <!-- end footer -->
+    <!-- js files -->
+
+    <script src="~/Content/js/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+
+    <script src="~/Content/js/bootstrap.min.js"></script>
+
+    <script src="~/Content/js/main.js"></script>
+
+</body>
+</html>
+<script>
+    @* const body = document.body;
+    const switch_mode = document.querySelector('#switch-mode i');
+    switch_mode.addEventListener('click', () => {
+
+         body.classList.toggle('dark-mode');
+    });
+*@
+    $(document).ready(function () {
+        // Kiểm tra trạng thái ban đầu của chủ đề tối từ localStorage
+        const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+
+        // Áp dụng trạng thái chủ đề tối ban đầu
+        toggleDarkMode(isDarkMode);
+
+        // Xử lý sự kiện nhấn nút chuyển đổi chủ đề tối
+        $('.theme_mode').on('change', function () {
+            const isDarkModeEnabled = $(this).prop('checked');
+            toggleDarkMode(isDarkModeEnabled);
+        });
+
+        // Hàm chuyển đổi chủ đề tối
+        function toggleDarkMode(enabled) {
+            // Cập nhật trạng thái checkbox
+            $('.theme_mode').prop('checked', enabled);
+
+            // Cập nhật lớp của body
+            if (enabled) {
+                $('body').addClass('dark-mode');
+            } else {
+                $('body').removeClass('dark-mode');
+            }
+
+            // Lưu trạng thái chủ đề tối vào localStorage
+            localStorage.setItem('darkMode', enabled ? 'enabled' : 'disabled');
+        }
+    });
+
+</script>
+<style>
+    body {
+        background-color: #fff;
+        color: #000;
+    }
+
+        /* Kiểu chủ đề tối */
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+    footer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+
+        footer .col {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        footer .logo {
+            margin-bottom: 30px;
+        }
+
+        footer h4 {
+            font-size: 14px;
+            padding-bottom: 20px;
+        }
+
+        footer p {
+            font-size: 13px;
+            max-width: 0 0 8px 0;
+        }
+
+        footer a {
+            font-size: 13px;
+            text-decoration: none;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        footer .follow i {
+            margin-top: 20px;
+            padding-right: 4px;
+            cursor: pointer;
+        }
+
+    #copyright {
+        margin-top: -50px;
+        margin-left: 580px;
+    }
+
+    footer .install .row img {
+        border: 1px solid #088178;
+        border-radius: 6px;
+    }
+
+    footer .install img {
+        margin: 10px 0 15px 0;
+    }
+
+    footer .follow i:hover,
+    footer a:hover {
+        color: #088178;
+    }
+</style>

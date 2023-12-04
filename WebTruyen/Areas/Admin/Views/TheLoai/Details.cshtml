@@ -1,0 +1,36 @@
+﻿@model WebTruyen.Models.TheLoai
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container">
+    <hr />
+    <h2 style="text-align:center">CHI TIẾT THỂ LOẠI</h2>
+
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Mã thể loại
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaTheLoai)
+            </dd>
+            <dt>
+                Tên thể loại
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenTheLoai)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.MaTheLoai }) |
+        @Html.ActionLink("Trở lại trang chủ", "Index")
+    </p>
+</div>

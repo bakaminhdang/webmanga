@@ -1,0 +1,53 @@
+﻿@model WebTruyen.Models.Chuong
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+<div class="container">
+    <br />
+    <h4>XÁC NHẬN THÔNG TIN CẦN XÓA</h4>
+    <h5>Bạn quyết định xóa quyển truyện này?</h5>
+
+    <dl class="dl-horizontal">
+        <p> <b>Tên truyện: </b>@Html.DisplayFor(model => model.Truyen.TenTruyen)</p>
+        <p> <b>Số chương: </b>@Html.DisplayFor(model => model.SoChuong)</p>
+        <p> <b>Trạng thái: </b> @Html.DisplayFor(model => model.TieuDe)</p>
+        <dt>
+            Mô tả:
+        </dt>
+
+        <dd>
+            @Html.Raw(@Model.NoiDung.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+        </dd>
+
+
+        <dt>
+            Hình:
+        </dt>
+
+        <dd>
+            <img src="~/img/@Model.hinh" alt=" @Model.Truyen.TenTruyen">
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="XÓA" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+            <br />
+        </div>
+    }
+</div>
+
+
+

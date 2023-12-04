@@ -1,0 +1,40 @@
+﻿
+@using WebTruyen.Models
+@model List<LichSu>
+
+@{
+    ViewBag.Title = "LichSu";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+}
+
+<h2 style="text-align:center;">Truyện Đã Đọc</h2>
+<table border="1">
+    <tr style="background-color: aqua; font-size: 15px;font-weight:bold;text-align:center">
+        <td>Mã Truyện</td>
+        <td>Tên Truyện</td>
+        <td>Ảnh Bìa</td>
+      
+      
+    
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td align="center">
+                @item.iMaTruyen
+            </td>
+            <td>
+                @item.sTenTruyen
+            </td>
+            <td>
+                <img src="~/img/@item.sHinh" style="width:100px;" />
+            </td>
+        
+        </tr>
+    }
+    
+ 
+</table>

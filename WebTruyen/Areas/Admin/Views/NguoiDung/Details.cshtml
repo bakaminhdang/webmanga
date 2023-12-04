@@ -1,0 +1,30 @@
+﻿@model WebTruyen.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container">
+<h2>chi tiết tài khoản người dùng</h2>
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+
+        <p> <b>Tên người dùng: </b>@Html.DisplayFor(model => model.Ten)</p>
+        <p> <b>Địa chỉ: </b>@Html.DisplayFor(model => model.DiaChi)</p>
+        <p> <b>Email: </b>@Html.DisplayFor(model => model.Email)</p>
+
+        <p> <b>Số điện thoại: </b>@Html.DisplayFor(model => model.SDT)</p>
+        <p> <b>Mật khẩu: </b>@Html.DisplayFor(model => model.MatKhau)</p>
+        <p> <b>Quyền truy cập: </b>@Html.DisplayFor(model => model.QuyenTruyCap)</p>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaNguoiDung }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+
+</div>

@@ -1,0 +1,174 @@
+﻿<script>
+    window.SuuTruyen = {
+        baseUrl: 'https://suustore.com',
+        urlCurrent: 'https://suustore.com',
+        csrfToken: '4EebYu2rWivdRk1ET12dyuY0CJjpRERhJynPtvUy'
+    }
+</script>
+<link rel="shortcut icon" href="https://suustore.com/assets/frontend/images/favicon.ico" type="image/x-icon">
+<nav class="navbar navbar-expand-lg navbar-light shadow py-2 py-sm-0">
+    <a class="navbar-brand" href="@Url.Action("Index", "TrangChu")">
+        <h5>Manga Mayne</h5>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="container-fluid">
+            <div class="row py-3">
+                <div class="col-lg-6 col-sm-12 mb-3 mb-sm-0">
+                    <ul class="navbar-nav mr-auto">
+                        <!-- always use single word for li -->
+                        <li class="nav-item active">
+                            <a class="nav-link" href="@Url.Action("Index", "TrangChu")">Trang Chủ<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://discord.gg/DsBYknz6yp">Discord</a>
+                        </li>
+                        @* <li class="nav-item">
+            <a class="nav-link" href="#">Phổ Biến</a>
+        </li>*@
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "GoiTk")">Nạp VIP</a>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Thể Loại
+                            </a>
+                            @Html.Action("TheLoai", "TrangChu")
+                        </li>
+
+                        <div class="form-check form-switch me-3 d-flex align-items-center">
+
+                            <input class="form-check-input theme_mode" type="checkbox"
+                                   style="transform: scale(1.3); margin-left: 12px; margin-right: 12px;">
+
+                            <label class="form-check-label">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 384 512"
+                                     style="fill: #fff;">
+                                    <path d="M144.7 98.7c-21 34.1-33.1 74.3-33.1 117.3c0 98 62.8 181.4 150.4 211.7c-12.4 2.8-25.3 4.3-38.6 4.3C126.6 432 48 353.3 48 256c0-68.9 39.4-128.4 96.8-157.3zm62.1-66C91.1 41.2 0 137.9 0 256C0 379.7 100 480 223.5 480c47.8 0 92-15 128.4-40.6c1.9-1.3 3.7-2.7 5.5-4c4.8-3.6 9.4-7.4 13.9-11.4c2.7-2.4 5.3-4.8 7.9-7.3c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-3.7 .6-7.4 1.2-11.1 1.6c-5 .5-10.1 .9-15.3 1c-1.2 0-2.5 0-3.7 0c-.1 0-.2 0-.3 0c-96.8-.2-175.2-78.9-175.2-176c0-54.8 24.9-103.7 64.1-136c1-.9 2.1-1.7 3.2-2.6c4-3.2 8.2-6.2 12.5-9c3.1-2 6.3-4 9.6-5.8c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-3.6-.3-7.1-.5-10.7-.6c-2.7-.1-5.5-.1-8.2-.1c-3.3 0-6.5 .1-9.8 .2c-2.3 .1-4.6 .2-6.9 .4z">
+                                    </path>
+                                </svg>
+                            </label>
+                        </div>
+
+
+                    </ul>
+                </div>
+                <div class="col">
+                    @using (Html.BeginForm("Index", "TimKiem", FormMethod.Get))
+                    {
+                        <form class="form-inline search">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="strSearch" value="@ViewBag.Sreach" placeholder="truyện hoặc mô tả truyện">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="profile float-right">
+        <div class="saved">
+            <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                <i class="fa fa-bookmark fa-2x"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                @*<a class="dropdown-item" href="#">
+                    <div class="row">
+                        <div class="col"><img src="img/cover1.jpg" width="50"></div>
+                        <div class="col">
+                            <h5>One piece 1</h5>
+                            <small>Mới Nhất <span>VOL. 11</span></small>
+                        </div>
+                    </div>
+                </a>
+                <a class="dropdown-item" href="#">
+                    <div class="row">
+                        <div class="col"><img src="img/cover1.jpg" width="50"></div>
+                        <div class="col">
+                            <h5>One piece 1</h5>
+                            <small>Mới Nhất <span>VOL. 11</span></small>
+                        </div>
+                    </div>
+                </a>*@
+                <hr>
+                <a class="dropdown-item" href="@Url.Action("FavoriteBooks", "TruyenYeuThich")">Xem Manga đã lưu</a>
+            </div>
+        </div>
+     
+        <div class="account">
+            <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                <i class="fa fa-user-circle fa-2x"></i><i class="fa fa-angle-down"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                @if (Session["TaiKhoan"] != null)
+                {
+
+                    <a class="dropdown-item" href="#"> Tài Khoản: @Session["HoTen"].ToString()</a>
+                    <a class="dropdown-item" href="~/User/DangXuat">Đăng Xuất</a>
+                    <a class="dropdown-item" href="~/User/ThongTinND">Thông Tin Người Dùng</a>
+                    <a class="dropdown-item" href="~/LichSu/LichSuTruyen">Lịch Sử Đọc Truyện</a>
+                }
+                else
+                {
+                    <a class="dropdown-item" href="~/User/DangNhap">Đăng Nhập</a>
+
+
+                }
+            </div>
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</nav>
+
+<style>
+    .form-check.form-switch {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 2.5em;
+        cursor: pointer;
+    }
+
+        .form-check.form-switch .form-check-input {
+            position: absolute;
+            left: 0;
+            z-index: 1;
+            margin-top: 0.25em;
+            transform: scale(1.3);
+        }
+
+        .form-check.form-switch .form-check-label {
+            position: relative;
+            z-index: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: 12px;
+            padding-right: 12px;
+            cursor: pointer;
+        }
+
+        .form-check.form-switch svg {
+            fill: #fff;
+        }
+
+        .form-check.form-switch input:checked {
+            background-color: #212529;
+        }
+
+            .form-check.form-switch input:checked + .form-check-label svg {
+                fill: #fff;
+            }
+</style>

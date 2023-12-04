@@ -1,0 +1,74 @@
+﻿@model WebTruyen.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container">
+    <h2>XÁC NHẬN THÔNG TIN CẦN XÓA</h2>
+    <h3>Bạn quyết định xóa chủ đề này?</h3>
+    <div>
+        <h4>NguoiDung</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+               Tên người dùng
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ten)
+            </dd>
+
+            <dt>
+              Địa chỉ
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DiaChi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+              Số điện thoại
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SDT)
+            </dd>
+
+            <dt>
+               Mật khẩu
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MatKhau)
+            </dd>
+
+            <dt>
+               Quyền truy cập
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.QuyenTruyCap)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>

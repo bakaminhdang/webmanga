@@ -1,0 +1,12 @@
+﻿
+@model IEnumerable<WebTruyen.Models.TheLoai>
+
+
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    @foreach (var item in Model)
+    {
+        <a class="dropdown-item" href="@Url.Action("TruyenTheoTL","TrangChu",new { id = item.MaTheLoai })">@item.TenTheLoai</a>
+        <div class="dropdown-divider"></div>
+       
+    }
+    </div>

@@ -1,0 +1,21 @@
+﻿
+@model IEnumerable<WebTruyen.Models.Chuong>
+    <div class="custom-dropdown">
+        <button class="dropdown-toggle" id="dropdownButton">Chọn Chương</button>
+        <div class="dropdown-list" id="dropdownList">
+            @foreach (var chapter in Model)
+            {
+                <a href="@Url.Action("Index", "Truyen", new { id = chapter.MaTruyen, id2 = chapter.MaChuong })">  @chapter.TieuDe</a>
+
+            }
+            </div>
+    </div>
+
+    <script>
+        document.getElementById("chapterSelect").onchange = function () {
+            var selectedOption = this.value;
+            if (selectedOption) {
+                window.location = selectedOption; // Chuyển hướng đến URL được chọn
+            }
+        };
+    </script>

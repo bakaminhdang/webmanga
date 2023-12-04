@@ -1,0 +1,50 @@
+﻿
+
+@model WebTruyen.Models.DonHang
+
+@{ ViewBag.Title = "Delete";
+                Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml"; }
+<div class="container">
+    <h2>XÁC NHẬN THÔNG TIN CẦN XÓA</h2>
+    <h3>Bạn quyết định xóa Đơn Hàng này</h3>
+    <div>
+        <h4>NguoiDung</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+              Mã Người Dùng 
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MaNguoiDung)
+            </dd>
+
+            <dt>
+               Mã Đơn Hàng
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.MaDonHang)
+            </dd>
+
+            <dt>
+               TenNguoiDung
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NguoiDung.Ten)
+            </dd>
+
+         
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+@Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>}
+    </div>
+</div>

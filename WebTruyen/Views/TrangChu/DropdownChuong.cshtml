@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebTruyen.Models.Chuong>
+<div class="tab-content">
+
+    <!-- start ch -->
+    <div id="ch" class="tab-pane fade in active show">
+
+        @foreach (var item in Model)
+        {
+<div class="row">
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>
+                   
+                <a  id="myLink" onclick="handleClick();" href="@Url.Action("Index", "Truyen", new { id = item.MaTruyen, id2 = item.MaChuong })" >@item.TieuDe</a>
+                    <a  id="myLink2" onclick="handleClick();" href="@Url.Action("AddLichSuTruyen", "LichSu", new { matruyen = item.MaTruyen })" ></a></th>
+                <th> <input name="MaChuong" type="hidden" value="@item.MaChuong" readonly /></th>
+               
+               
+                <td class="text-muted text-uppercase float-right">8 hours ago</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>}
+
+    </div>
+</div>
+<script>
+    function function1() {
+        var url = document.getElementById('myLink').getAttribute('href');
+        window.location.href = url;
+    }
+
+    function function2() {
+        var url = document.getElementById('myLink2').getAttribute('href');
+        window.location.href = url;
+    }
+
+    function handleClick() {
+        event.preventDefault();
+        function2();
+        function1();
+        
+    }
+   
+  
+</script>
+

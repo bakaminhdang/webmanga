@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebTruyen.Models.TruyenYeuThich>
+
+@{
+    ViewBag.Title = "FavoriteBooks";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Truyện Yêu Thích</h2>
+
+<
+<table class="table">
+    <tr>
+
+        <th>
+            @*  @Html.DisplayNameFor(model => model.truy)*@ Mã truyện
+        </th>
+        <th>
+            Tên Truyện
+        </th>
+        <th>
+            Ảnh Truyện
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Truyen.MaTruyen)
+            </td>
+            <td>@item.Truyen.TenTruyen</td>
+            <td><img style="text-align:center;width:80px" src="~/img/@item.Truyen.Hinh" class="card-img-top" alt=""></td>
+
+
+
+            <td>
+
+                @*  @Html.ActionLink("Details", "Details", new { id = item.MaTruyenYeuThich }) |*@
+                @* @Html.ActionLink("RemoveFromFavorites", "TruyenYeuThich", new { id=item.MaTruyenYeuThich })*@
+                <a href="~/TruyenYeuThich/RemoveFromFavorites?bookid=@item.MaTruyen">|Xóa Truyện Khỏi Danh Sách|</a>
+                <a href="@Url.Action("Chitiettruyen","TrangChu", new {id = item.MaTruyen })">Chi Tiết Truyện </a>
+            </td>
+        </tr>
+    }
+
+</table>
+

@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+
+}
+<!DOCTYPE html>
+<html class="translated-ltr">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    </head>
+<body>
+    <form action="~/Admin/Home/Login" method="post" class="box login">
+        <section class='login' id='login'>
+            <div class='head'>
+                <h1 class='company'>Log in with Admin rights </h1>
+            </div>
+            <p class='msg'>Welcome back</p>
+            <div class='form'>
+
+                <input type="text" placeholder="Username" class="text" name="TaiKhoan" required><br>
+                <input type="password" placeholder="••••••••••••••" class='password' name="Password"><br>
+                <input type="submit" id="do-login" class="btn-login" value="Login" tabindex="4">
+                <br />
+                <p style="font-style:italic; color:red;">@ViewBag.ThongBao</p>
+            </div>
+        </section>
+        </form>
+</body>
+    </html>
+    @Styles.Render("~/Content/style.css")

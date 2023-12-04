@@ -1,0 +1,129 @@
+﻿
+
+
+
+@model WebTruyen.Models.Truyen
+@{
+    ViewBag.Title = "Chitiettruyen";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<form action="~/Payment/CreateCheckoutSession" method="POST">
+
+
+
+
+    <div class="container my-5">
+        <div class="read-intro bg-light">
+            <div class="row">
+
+                <a class="btn btn-red my-3 mx-1 px-5" href="@Url.Action("AddTruyenYeuThich", "TruyenYeuThich", new { MaTruyen = Model.MaTruyen})">Lưu Truyện</a>
+                
+                <input name="MaTruyen" type="hidden" value="@Model.MaTruyen" readonly />
+            </div>
+            <div class="row">
+                <div class="cover col-*">
+                    <img class="shadow" src="~/img/@Model.Hinh.ToString()" alt="">
+                </div>
+                <div class="info col">
+                    <h2 class="head">One piece</h2>
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <th scope="row">Tên truyện:</th>
+                                <td>@Model.TenTruyen</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Tác giá: </th>
+                                <td>@Model.TacGia</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Thể loại:</th>
+                                <td>@Model.TheLoai.TenTheLoai</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Giá:</th>
+                                <td>
+                                    @Model.GiaTruyen
+                                    <input type="text" id="gia" name="gia" value="@Model.GiaTruyen" required />
+
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">Đánh Giá:</th>
+                                <td>
+                                    <i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star fa-2x"></i><i class="fa fa-star-half-alt fa-2x"></i> <span class="font-weight-bold ml-3">(10/@Model.DiemDanhGia)</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Mô Tả:</th>
+                                <td>
+                                   @Model.MoTa
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+                    <button type="submit">Mua</button>
+                </div>
+
+                <p>
+                   
+                    <a href="#">
+
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            
+        </div>
+    </div>
+    </div>
+
+    <div class="container my-5 bg-white">
+        <div class="intro-lists">
+            <div class="intro-lists">
+
+                @Html.Action("DropdownChuong", "TrangChu")
+
+            </div>
+        </div>
+    </div>
+    @Html.Action("Index", "BinhLuan")
+
+    @*<div>
+             @Html.Action("AddBinhLuan", "BinhLuan" , new { MaTruyen = Model.MaTruyen }))
+        </div>*@
+    <div class="container text-center">
+        <h2>Đánh giá</h2>
+        <p>
+
+            Bình Luận Truyện :
+            <input type="text" size="90" height="40" id="noidung" name="noidung" />
+
+            <a onclick="setSession()" id="feedbackLink" href="@Url.Action("AddBinhLuan", "BinhLuan", new { id = Model.MaTruyen, url = Request.Url.ToString() })">Bình Luận </a>
+
+
+        </p>
+    </div>
+    <script>
+        function setSession() {
+            var inputValue = document.getElementById('noidung').value;
+
+
+            document.cookie = "nd=" + inputValue + "; path=/";
+
+
+        }
+    </script>
+</form>
+
+<style>
+    #gia {
+        visibility: hidden;
+    }
+</style>

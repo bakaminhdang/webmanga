@@ -1,0 +1,74 @@
+﻿@model WebTruyen.Models.Chuong
+
+@{ ViewBag.Title = "Edit";
+                Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml"; }
+<script src="~/ckeditor/ckeditor.js"></script>
+<div class="container">
+    <h2>Sửa chi tiết truyện</h2>
+
+    @using (Html.BeginForm("Edit", "Chuong", FormMethod.Post, new
+    {
+        @enctype =
+    "multipart/form-data"
+    }))
+    {
+@Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Truyen</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-md-2">Truyện :</label>
+        <div class="col-md-10">
+
+            @Html.DropDownList("MaTruyen")
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">So Chuong</label>
+        <div class="col-md-10">
+            <input type="text" name="SoChuong" value="@Model.SoChuong" required />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Nội Dung:</label>
+        <div class="col-md-10">
+            <textarea name="NoiDung" id="mota">@Model.NoiDung</textarea>
+            <script>CKEDITOR.replace('mota');</script>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Tiêu Đề:</label>
+        <div class="col-md-10">
+            <input type="text" name="TieuDe" value="@Model.TieuDe" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Ảnh bìa:</label>
+        <div class="col-md-10">
+            <input type="file" name="fFileUpload" />
+            <img src="~/img/@Model.hinh" width="120"> (Ảnh hiện tại)
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="LƯU THÔNG TIN" class="btn btn-default" />
+        </div>
+    </div>
+</div>}
+
+    <div>
+        <br />
+        @Html.ActionLink("VỀ TRANG QUẢN LÝ TRUYỆN", "Index")
+    </div>
+</div>

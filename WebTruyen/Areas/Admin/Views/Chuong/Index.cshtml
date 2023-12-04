@@ -1,0 +1,93 @@
+﻿@using WebTruyen.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<WebTruyen.Models.Chuong>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+
+    <h2 style="text-align:center">Quản lý danh sách Chương</h2>
+
+    <p>
+        @Html.ActionLink("Thêm mới", "Create")
+    </p>
+
+    <table class="table" style="align-content:center">
+        <tr>
+            <th style="text-align: center; width: 70px">
+                Mã Chương
+            </th>
+            <th style="text-align: center; width: 80px">
+                Mã Truyện
+            </th>
+            <th style="text-align: center; width: 150px">
+                Số chương
+            </th>
+            <th style="text-align: center; width: 70px">
+               Tiêu Đề
+            </th>
+            <th style="text-align: center; width: 100px">
+               Nội Dung
+            </th>
+           
+           
+            <th style="text-align:center;width:100px">
+                @Html.DisplayNameFor(model => model.First().hinh)
+            </th>
+           
+         
+          
+        
+            <th style="text-align:center"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaChuong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaTruyen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoChuong)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TieuDe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoiDung)
+                </td>
+               
+                <td>
+                    <img src="~/img/@item.hinh" style="width:50px;" />
+                </td>
+               
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.MaChuong })" class="btn btn-warning" role="button">Sửa</a>
+
+                    <a href="@Url.Action("Details", new { id = item.MaChuong })" class="btn btn-primary" role="button">Chi tiết</a>
+
+                    <a href="@Url.Action("Delete", new { id = item.MaChuong })" class="btn btn-danger" role="button">Xóa</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+    <div>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 :Model.PageNumber)/@Model.PageCount
+        <div class="MenuTrang">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+        </div>
+    </div>
+    <style>
+        .MenuTrang {
+            display: inline;
+            text-align: center;
+        }
+    </style>
+    @*   @Styles.Render("~/Content/PagedList.css")*@

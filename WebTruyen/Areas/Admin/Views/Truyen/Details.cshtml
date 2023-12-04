@@ -1,0 +1,51 @@
+﻿@model WebTruyen.Models.Truyen
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+</style>
+<div  class="container">
+    <br />
+    <h2 style="text-align:center">CHI TIẾT SÁCH</h2>
+    <dl class="dl-horizontal">
+        <p> <b>Tên truyện: </b>@Html.DisplayFor(model => model.TenTruyen)</p>
+        <p> <b>Tác giả: </b>@Html.DisplayFor(model => model.TacGia)</p>
+        <dt>
+            Mô tả:
+        </dt>
+
+        <dd>
+            @Html.Raw(@Model.MoTa.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp"))
+        </dd>
+        <p> <b>Trạng thái: </b> @Html.DisplayFor(model => model.TrangThai)</p>
+        <p> <b>Thể loại: </b>  @Html.DisplayFor(model => model.TheLoai.TenTheLoai)</p>
+        <p> <b>Ngày xuất bản: </b>@Html.FormatValue(@Model.NgayXuatBan, "{0:dd/MM/yyyy}")</p>
+        <dt>
+            Hình:
+        </dt>
+
+        <dd>
+            <img src="~/img/@Model.Hinh" alt=" @Model.TenTruyen">
+        </dd>
+        <p> <b>Số lượt xem: </b>@Html.DisplayFor(model => model.SoLuotXem)</p>
+        <p> <b>Điểm đánh giá: </b>@Html.DisplayFor(model => model.DiemDanhGia)</p>
+        <p> <b>Giá truyện: </b>@Html.FormatValue(@Model.GiaTruyen, "{0:#,##0}") VNĐ</p>
+        <p> <b>Số lượng tồn: </b>@Html.DisplayFor(model => model.SoLuongTon)</p>
+        <p> <b>Số lượng bán: </b>@Html.DisplayFor(model => model.SoLuongBan)</p>
+
+
+    </dl>
+    
+    <p>
+        <br />
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.MaTruyen }) |
+        @Html.ActionLink("VỀ TRANG QUẢN LÝ TRUYỆN", "Index")
+        <br />
+    </p>
+</div>

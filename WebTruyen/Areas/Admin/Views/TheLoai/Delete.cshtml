@@ -1,0 +1,35 @@
+﻿@model WebTruyen.Models.TheLoai
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container">
+   <hr />
+    <h2>XÁC NHẬN THÔNG TIN CẦN XÓA</h2>
+    <h3>Bạn quyết định xóa thể loại này?</h3>
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên thể loại
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenTheLoai)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿@using WebTruyen.Models
+@model List<ChatData>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+<h2>Chat Box</h2>
+
+<div id="chatBox">
+    @foreach (var message in Model)
+    {
+        <div>
+            <strong>User:</strong> @message.Question
+            <br />
+            <strong>Bot:</strong> @message.Answer
+        </div>
+    }
+</div>
+
+<hr />
+
+<div>
+    <label for="userQuestion">Your question:</label>
+    <input type="text" id="userQuestion" />
+    <button onclick="getGPTAnswer()">Ask</button>
+</div>
+
+<script>
+    function getGPTAnswer() {
+        var userQuestion = $('#userQuestion').val();
+        $.post('/Chat/GetGPTAnswer', { userQuestion: userQuestion }, function (data) {
+            $('#chatBox').append('<div><strong>User:</strong> ' + userQuestion + '<br /><strong>Bot:</strong> ' + data.answer + '</div>');
+        });
+    }
+</script>

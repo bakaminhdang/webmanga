@@ -1,0 +1,57 @@
+﻿@model WebTruyen.Models.GoiTaiKhoan
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<title>Mua Gói Tài Khoản VIP</title>
+<style>
+   
+
+    .container {
+        text-align: center;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    p {
+        color: #666;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+</style>
+
+<form action="~/Payment/CreateCheckoutSessionVip" method="POST">
+    <div class="container">
+        <h2>Mua Gói Tài Khoản VIP</h2>
+        <p>Nâng cấp tài khoản của bạn để trải nghiệm các tính năng của gói :@Model.TenGoi</p>
+        <input name="MaGoi" type="hidden" value="@Model.MaGoiTaiKhoan" readonly />
+        <p>Thông tin về gói tài khoản vip : @Model.ThongTinGoi</p>
+
+        <p>Giá Truyện </p>
+        <input type="text" name="gia" value="@Model.GiaGoi" required />
+
+
+
+        <button type="submit">Mua Gói @Model.TenGoi</button>
+    </div>
+</form>
+

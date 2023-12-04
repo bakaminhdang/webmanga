@@ -1,0 +1,58 @@
+﻿
+
+@using WebTruyen.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<WebTruyen.Models.BinhLuan>
+
+@{ ViewBag.Title = "Index";
+                Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml"; }
+<h2>Quản lý Bình Luận </h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên người dùng
+        </th>
+       
+        <th>
+            Nội Dung
+        </th>
+        
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @item.NguoiDung.Ten
+    </td>
+    <td>
+       @item.NoiDung
+    </td>
+   
+    <td>
+        
+
+        <a href="@Url.Action("Delete", new { id = item.MaNguoiDung })" class="btn btn-danger" role="button">Xóa</a>
+    </td>
+</tr>}
+
+</table>
+
+<div>
+    Trang @(Model.PageCount < Model.PageNumber ? 0 :Model.PageNumber)/@Model.PageCount
+    <div class="MenuTrang">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+    </div>
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>

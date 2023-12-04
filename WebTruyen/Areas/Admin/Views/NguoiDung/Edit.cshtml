@@ -1,0 +1,88 @@
+﻿@model WebTruyen.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container">
+    <h2>Edit</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>NguoiDung</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label class="control-label col-md-2">Mã người dùng:</label>
+        <div class="col-md-10">
+            @*Chỉ hiển thị mã sách không cho sửa*@
+            <input type="text" size="70" name="iMaNguoiDung" value="@Model.MaNguoiDung" readonly />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Tên người dùng:</label>
+        <div class="col-md-10">
+
+            <input type="text" size="70" name="sTen" value="@Model.Ten" required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Địa chỉ:</label>
+        <div class="col-md-10">
+            <input type="text" size="100" name="sDiaChi" value="@Model.DiaChi"
+                   required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Email:</label>
+        <div class="col-md-10">
+            <input type="text" size="70" name="sEmail" value="@Model.Email"
+                   required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Số điện thoại:</label>
+        <div class="col-md-10">
+            <input type="text" size="30" name="sSDT" value="@Model.SDT"
+                   required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Tài khoản:</label>
+        <div class="col-md-10">
+            <input type="text" size="70" name="sTaiKhoan" value="@Model.TaiKhoan"
+                   required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Mật khẩu:</label>
+        <div class="col-md-10">
+            <input type="password" size="30" name="sMatKhau" value="@Model.MatKhau"
+                   required />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Quyền truy cập:</label>
+        <div class="col-md-10">
+            <input type="text" size="70" name="sQuyenTruyCap" value="@Model.QuyenTruyCap"
+                   required />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
